@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colectivo RAMI — Comunidad, cultura y raíces en Escobedo, N.L.</title>
+  <meta name="description" content="Colectivo RAMI y Raíces RAMI acompañan a mujeres, niñas y niños de General Escobedo, Nuevo León, con talleres, clases de sábado y una red de apoyo comunitaria. / Colectivo RAMI and Raíces RAMI support women, girls and boys in General Escobedo, Nuevo León, with workshops, Saturday classes and a community network." />
+  <meta name="theme-color" content="#FAF2D7" />
+  <meta property="og:title" content="Colectivo RAMI" />
+  <meta property="og:description" content="Comunidad, cultura y raíces para las familias de General Escobedo, Nuevo León." />
+  <meta property="og:locale" content="es_MX" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='14' r='8' fill='%23D9A441'/%3E%3Cpath d='M4 27 Q16 19 28 27 Z' fill='%23540032'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       Colectivo RAMI — single-page site
+       Paleta morada / burdeos — v2
+       ============================================================ */
+
+    :root {
+      /* Palette — based on the reference image provided (morado/burdeos) */
+      --bg:         #FAF2D7;   /* warm cream */
+      --bg-alt:     #F3E2D8;   /* soft blush-cream */
+      --card:       #FFFDF6;
+      --ink:        #2E112D;   /* deep plum — primary text */
+      --ink-soft:   #5C4753;   /* muted plum-gray — secondary text */
+      --clay:       #820333;   /* primary action — burgundy */
+      --clay-deep:  #540032;   /* hover — dark maroon */
+      --clay-soft:  #E3AFC0;   /* decorative light rose */
+      --spark:      #D9A441;   /* warm gold accent */
+      --spark-soft: #F3DFAF;
+      --sage:       #7C8F6E;   /* secondary icon accent (Raíces RAMI) */
+      --sage-soft:  #DCE3D2;
+      --line:       rgba(46, 17, 45, .16);
+      --band:       #2E112D;   /* dark band bg — Programas & Impacto */
+      --band-card:  #540032;   /* card bg within dark band sections */
+      --offwhite:   #FFF7EE;   /* palette-neutral near-white for text on dark */
+
+      /* Type */
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body: "Nunito Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+      /* Shape & shadow */
+      --radius: 22px;
+      --radius-lg: 32px;
+      --shadow: 0 10px 30px rgba(46, 17, 45, .10), 0 2px 8px rgba(46, 17, 45, .06);
+      --shadow-lift: 0 18px 44px rgba(46, 17, 45, .16), 0 4px 10px rgba(46, 17, 45, .08);
+    }
+
+    /* ---------- Reset & base ---------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    a { color: var(--clay); }
+    button { font: inherit; cursor: pointer; }
+
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.12; letter-spacing: -.01em; }
+
+    :focus-visible {
+      outline: 3px solid var(--spark);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    ::selection { background: var(--spark-soft); }
+
+    .skip {
+      position: absolute; left: 16px; top: -60px; z-index: 100;
+      background: var(--ink); color: var(--bg);
+      padding: .6em 1.2em; border-radius: 999px; text-decoration: none;
+      transition: top .2s ease;
+    }
+    .skip:focus { top: 12px; }
+
+    .container { width: min(1120px, 92%); margin-inline: auto; }
+    section { padding: clamp(64px, 9vw, 110px) 0; position: relative; }
+    .section-head { max-width: 640px; margin-bottom: clamp(36px, 5vw, 56px); }
+    .section-head.center { margin-inline: auto; text-align: center; }
+
+    .kicker {
+      display: inline-flex; align-items: center; gap: .55em;
+      font-weight: 800; font-size: .82rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--clay);
+      margin-bottom: 14px;
+    }
+    .kicker::before {
+      content: ""; width: 26px; height: 3px; border-radius: 2px;
+      background: var(--spark);
+    }
+    .section-head.center .kicker::after {
+      content: ""; width: 26px; height: 3px; border-radius: 2px; background: var(--spark);
+    }
+
+    h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); font-weight: 600; margin-bottom: .55em; }
+    .lead { font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--ink-soft); }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: .55em;
+      padding: .85em 1.7em; border-radius: 999px;
+      font-weight: 800; text-decoration: none; border: 2px solid transparent;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .btn-primary { background: var(--clay); color: var(--offwhite); box-shadow: var(--shadow); }
+    .btn-primary:hover { background: var(--clay-deep); box-shadow: var(--shadow-lift); transform: translateY(-2px); }
+    .btn-ghost { border-color: var(--clay); color: var(--clay); background: transparent; }
+    .btn-ghost:hover { background: rgba(130, 3, 51, .08); transform: translateY(-2px); }
+    .btn-light { background: var(--offwhite); color: var(--clay); }
+    .btn-light:hover { background: #fff; transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+
+    /* ---------- Language switching ---------- */
+    [lang="es"] { display: revert; }
+    [lang="en"] { display: revert; }
+    :root[lang="es"] [lang="en"],
+    :root[lang="en"] [lang="es"] { display: none !important; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250, 242, 215, .9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-bar { display: flex; align-items: center; gap: 20px; padding: 14px 0; }
+    .brand {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 1.25rem; color: var(--ink); text-decoration: none;
+      margin-right: auto;
+    }
+    .brand svg { width: 38px; height: 38px; }
+    .brand .ram { color: var(--clay); }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a {
+      display: block; padding: .5em .85em; border-radius: 999px;
+      color: var(--ink); text-decoration: none; font-weight: 700; font-size: .95rem;
+    }
+    .nav-links a:hover { background: rgba(130, 3, 51, .09); color: var(--clay); }
+
+    .lang-switch {
+      display: inline-flex; border: 2px solid var(--line);
+      border-radius: 999px; padding: 3px; background: transparent;
+    }
+    .lang-switch button {
+      border: 0; background: transparent; border-radius: 999px;
+      padding: .28em .8em; font-weight: 800; font-size: .82rem;
+      color: var(--ink-soft); letter-spacing: .05em;
+    }
+    .lang-switch button.active { background: var(--clay); color: var(--offwhite); }
+
+    .nav-cta { white-space: nowrap; }
+    .nav-cta .btn { padding: .65em 1.4em; font-size: .95rem; }
+
+    .hamburger {
+      display: none; align-items: center; gap: 8px;
+      border: 2px solid var(--line); background: transparent;
+      border-radius: 12px; padding: .45em .6em .45em .75em;
+    }
+    .menu-label { font-size: .9rem; font-weight: 800; color: var(--ink); }
+    .hamburger svg { width: 22px; height: 22px; stroke: var(--ink); }
+
+    @media (max-width: 900px) {
+      .hamburger { display: inline-flex; }
+      .nav-links {
+        display: none;
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
+        background: var(--bg); border-bottom: 1px solid var(--line);
+        padding: 12px 4vw 20px; box-shadow: var(--shadow-lift);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: .85em 1em; font-size: 1.05rem; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero { overflow: hidden; padding-top: clamp(48px, 7vw, 90px); }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr .85fr;
+      gap: clamp(28px, 5vw, 64px); align-items: center;
+    }
+    .hero h1 { font-size: clamp(2.5rem, 5.2vw, 4.1rem); font-weight: 600; }
+    .hero h1 em { font-style: italic; color: var(--clay); }
+    .hero .lead { margin: 22px 0 30px; max-width: 34em; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: .5em;
+      background: var(--spark-soft); color: var(--ink);
+      border-radius: 999px; padding: .45em 1.1em;
+      font-weight: 800; font-size: .85rem; margin-bottom: 22px;
+    }
+    .hero-chip svg { width: 16px; height: 16px; }
+
+    .hero-art { position: relative; }
+    .hero-art > svg { width: 100%; height: auto; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-art { max-width: 480px; margin-inline: auto; }
+    }
+
+    /* ---------- Values ribbon ---------- */
+    .ribbon {
+      background: var(--clay); color: var(--spark-soft);
+      overflow: hidden; padding: 14px 0;
+      transform: rotate(-1deg) scale(1.02);
+      box-shadow: var(--shadow);
+    }
+    .ribbon-track {
+      display: inline-flex; gap: 2.5em; white-space: nowrap;
+      animation: ribbon-slide 26s linear infinite;
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 500;
+    }
+    .ribbon-track span::after { content: "✺"; margin-left: 2.5em; color: var(--spark); }
+    @keyframes ribbon-slide {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ---------- About / values ---------- */
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .value-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 26px 22px;
+      box-shadow: var(--shadow);
+    }
+    .value-card h3 { font-size: 1.25rem; margin-bottom: .35em; display: flex; align-items: center; gap: .5em; }
+    .value-card h3::before {
+      content: ""; width: 12px; height: 12px; border-radius: 50%;
+      background: var(--spark); flex: none;
+    }
+    .value-card p { color: var(--ink-soft); font-size: .97rem; }
+    @media (max-width: 900px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .values-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- Programs (dark band, white text) ---------- */
+    .programs { background: var(--band); color: var(--offwhite); }
+    .programs .kicker { color: var(--spark); }
+    .programs h2 { color: #fff; }
+    .programs .lead { color: rgba(255, 247, 238, .85); }
+    .programs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .program-card {
+      background: var(--band-card); border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: var(--radius-lg); padding: 34px 30px;
+      display: flex; flex-direction: column; gap: 16px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .program-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); }
+    .program-icon {
+      width: 58px; height: 58px; border-radius: 18px;
+      display: grid; place-items: center; background: rgba(255, 255, 255, .14);
+    }
+    .program-icon svg { width: 30px; height: 30px; stroke: var(--spark); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .program-card:nth-child(2) .program-icon svg { stroke: var(--sage); }
+    .program-card h3 { font-size: 1.5rem; color: #fff; }
+    .program-card > p { color: rgba(255, 247, 238, .88); }
+    .program-list { list-style: none; display: grid; gap: 10px; margin-top: 4px; }
+    .program-list li { position: relative; padding-left: 1.5em; color: rgba(255, 247, 238, .92); font-size: .97rem; }
+    .program-list li::before {
+      content: ""; position: absolute; left: 0; top: .55em;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--spark);
+    }
+    .program-card:nth-child(2) .program-list li::before { background: var(--sage); }
+    @media (max-width: 760px) { .programs-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- Necesidades ---------- */
+    .necesidades { background: var(--bg-alt); }
+    .necesidades-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+    .necesidad-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 24px 22px; box-shadow: var(--shadow);
+    }
+    .necesidad-icon {
+      width: 46px; height: 46px; border-radius: 14px; margin-bottom: 14px;
+      display: grid; place-items: center; background: var(--spark-soft);
+    }
+    .necesidad-icon svg { width: 23px; height: 23px; stroke: var(--clay); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .necesidad-card h3 { font-size: 1.05rem; margin-bottom: .35em; }
+    .necesidad-card p { color: var(--ink-soft); font-size: .92rem; }
+
+    /* ---------- Impact band (KPI row) ---------- */
+    .wave { display: block; width: 100%; height: 48px; margin-bottom: -1px; background: var(--bg); }
+    .impact { background: var(--band); color: var(--offwhite); padding: clamp(70px, 9vw, 110px) 0 clamp(76px, 9vw, 116px); }
+    .impact .kicker { color: var(--spark); }
+    .impact h2 { color: #fff; }
+    .impact .lead { color: rgba(255, 247, 238, .85); }
+    .kpi-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: clamp(20px, 3vw, 40px); margin-top: clamp(36px, 5vw, 56px);
+    }
+    .kpi { border-left: 3px solid rgba(255, 247, 238, .35); padding-left: clamp(14px, 2vw, 26px); }
+    .kpi-value {
+      font-family: var(--font-body); font-weight: 800;
+      font-size: clamp(3rem, 4.4vw, 3.5rem); line-height: 1.05;
+      letter-spacing: -.01em; display: block;
+    }
+    .kpi-label { display: block; margin-top: 8px; font-size: .95rem; font-weight: 700; color: rgba(255, 247, 238, .82); }
+    .impact-note { margin-top: 34px; font-size: .88rem; color: rgba(255, 247, 238, .7); }
+
+    /* ---------- Quote ---------- */
+    .quote { text-align: center; }
+    .quote blockquote {
+      max-width: 780px; margin-inline: auto;
+      font-family: var(--font-display); font-style: italic; font-weight: 500;
+      font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.4;
+    }
+    .quote blockquote::before {
+      content: "“"; display: block; font-size: 4rem; line-height: .4;
+      color: var(--spark); margin-bottom: 18px; font-style: normal;
+    }
+    .quote cite {
+      display: block; margin-top: 26px; font-style: normal;
+      font-family: var(--font-body); font-weight: 800; font-size: .95rem; color: var(--ink-soft);
+    }
+    .quote cite::before { content: ""; display: block; width: 40px; height: 3px; background: var(--spark); margin: 0 auto 14px; border-radius: 2px; }
+
+    /* ---------- Cómo ayudar ---------- */
+    .ayudar { background: var(--bg-alt); }
+    .help-tabs { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-bottom: 30px; }
+    .help-tab {
+      display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;
+      flex: 1 1 200px; max-width: 260px;
+      background: var(--card); border: 2px solid var(--line); border-radius: var(--radius);
+      padding: 22px 18px; box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .help-tab:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+    .help-tab .tab-icon { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: var(--spark-soft); }
+    .help-tab .tab-icon svg { width: 26px; height: 26px; stroke: var(--clay); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .help-tab .tab-title { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; }
+    .help-tab .tab-sub { font-size: .85rem; color: var(--ink-soft); }
+    .help-tab[aria-selected="true"] { border-color: var(--clay); background: var(--clay); }
+    .help-tab[aria-selected="true"] .tab-icon { background: rgba(255, 255, 255, .18); }
+    .help-tab[aria-selected="true"] .tab-icon svg { stroke: #fff; }
+    .help-tab[aria-selected="true"] .tab-title { color: #fff; }
+    .help-tab[aria-selected="true"] .tab-sub { color: rgba(255, 255, 255, .82); }
+    @media (max-width: 640px) {
+      .help-tab { flex: 1 1 100%; max-width: none; flex-direction: row; text-align: left; }
+    }
+
+    .help-panels {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow);
+      padding: clamp(26px, 4vw, 40px);
+    }
+    .help-panel[hidden] { display: none; }
+    .panel-lead { color: var(--ink-soft); max-width: 46em; }
+
+    .bank-block { display: grid; gap: 10px; margin: 20px 0; max-width: 30em; }
+    .bank-row { display: flex; justify-content: space-between; gap: 10px; padding: .5em 0; border-bottom: 1px dashed var(--line); }
+    .bank-row .lbl2 { font-weight: 700; color: var(--ink-soft); font-size: .85rem; }
+    .bank-row .val2 { font-weight: 800; }
+    .clabe {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      background: var(--bg); border: 1.5px dashed var(--clay-soft);
+      border-radius: 12px; padding: .7em 1em;
+      font-weight: 800; letter-spacing: .04em; font-variant-numeric: tabular-nums;
+    }
+    .copy-btn { border: 0; background: var(--clay); color: var(--offwhite); border-radius: 8px; padding: .35em .8em; font-size: .8rem; font-weight: 800; }
+    .copy-btn:hover { background: var(--clay-deep); }
+
+    .example-badge {
+      display: inline-flex; align-items: center; gap: .5em;
+      background: var(--spark-soft); color: var(--ink);
+      border: 1px dashed var(--clay-soft); border-radius: 999px;
+      padding: .45em 1.1em; font-size: .8rem; font-weight: 700; margin-top: 16px;
+    }
+    .example-badge svg { width: 14px; height: 14px; stroke: var(--clay); fill: none; stroke-width: 2.2; stroke-linecap: round; flex: none; }
+
+    .item-tabs {
+      display: inline-flex; flex-wrap: wrap; gap: 6px; background: var(--bg);
+      border: 2px solid var(--line); border-radius: 999px; padding: 4px; margin: 18px 0 6px;
+    }
+    .item-tab { border: 0; background: transparent; border-radius: 999px; padding: .55em 1.3em; font-weight: 800; font-size: .88rem; color: var(--ink-soft); }
+    .item-tab[aria-selected="true"] { background: var(--clay); color: var(--offwhite); }
+    .item-panel p { color: var(--ink-soft); max-width: 44em; }
+    .item-panel[hidden] { display: none; }
+
+    fieldset { border: 0; padding: 0; margin: 0; }
+    .field-checks legend { font-weight: 800; font-size: .92rem; margin-bottom: 10px; }
+    .check-row { display: flex; align-items: flex-start; gap: .6em; margin-bottom: 9px; font-size: .95rem; }
+    .check-row input { margin-top: .3em; accent-color: var(--clay); }
+
+    .donate-ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 34px; }
+
+    /* ---------- Contact ---------- */
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(30px, 5vw, 70px); align-items: start; }
+    .contact-list { list-style: none; display: grid; gap: 16px; margin-top: 8px; }
+    .contact-list li { display: flex; align-items: flex-start; gap: 14px; }
+    .contact-list .ico { flex: none; width: 44px; height: 44px; border-radius: 14px; background: var(--spark-soft); display: grid; place-items: center; }
+    .contact-list .ico svg { width: 22px; height: 22px; stroke: var(--clay); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-list a { font-weight: 700; text-decoration: none; color: var(--ink); }
+    .contact-list a:hover { color: var(--clay); }
+    .contact-list .lbl { display: block; font-size: .82rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+
+    .socials { display: flex; gap: 10px; margin-top: 26px; }
+    .socials a { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; transition: background .15s ease, border-color .15s ease; }
+    .socials a:hover { background: var(--spark-soft); border-color: var(--spark); }
+    .socials svg { width: 20px; height: 20px; fill: var(--ink); }
+
+    form {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow);
+      padding: clamp(26px, 4vw, 40px); display: grid; gap: 18px;
+    }
+    .field label { display: block; font-weight: 800; font-size: .92rem; margin-bottom: 6px; }
+    .field input, .field textarea {
+      width: 100%; font: inherit; color: var(--ink);
+      background: var(--bg); border: 1.5px solid var(--line);
+      border-radius: 14px; padding: .8em 1em;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--clay); outline: none; box-shadow: 0 0 0 3px rgba(217, 164, 65, .35); }
+    .field textarea { resize: vertical; min-height: 130px; }
+    .form-hint { font-size: .85rem; color: var(--ink-soft); }
+    @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: var(--ink); color: rgba(255, 247, 238, .8); padding: 44px 0 34px; font-size: .95rem; }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: #fff; }
+    .footer-brand svg { width: 30px; height: 30px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; }
+    .footer-links a { color: rgba(255, 247, 238, .8); text-decoration: none; font-weight: 700; }
+    .footer-links a:hover { color: var(--spark); }
+    .footer-fine { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255, 247, 238, .15); font-size: .85rem; }
+
+    /* ---------- Reveal on scroll ---------- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal:nth-child(2) { transition-delay: .07s; }
+    .reveal:nth-child(3) { transition-delay: .14s; }
+    .reveal:nth-child(4) { transition-delay: .21s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .ribbon-track { animation: none; }
+      .btn, .program-card, .skip { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">
+    <span lang="es">Saltar al contenido</span><span lang="en">Skip to content</span>
+  </a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="#main" aria-label="Colectivo RAMI — inicio">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="15" r="9" fill="#D9A441"/>
+          <g stroke="#D9A441" stroke-width="2.4" stroke-linecap="round">
+            <line x1="20" y1="1.5" x2="20" y2="4.5"/>
+            <line x1="7.5" y1="7" x2="9.6" y2="9.1"/>
+            <line x1="32.5" y1="7" x2="30.4" y2="9.1"/>
+          </g>
+          <path d="M2 33 Q20 20 38 33 Z" fill="#540032"/>
+        </svg>
+        <span>Colectivo&nbsp;<span class="ram">RAMI</span></span>
+      </a>
+
+      <nav aria-label="Principal">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#main"><span lang="es">Inicio</span><span lang="en">Home</span></a></li>
+          <li><a href="#nosotros"><span lang="es">Nosotros</span><span lang="en">About</span></a></li>
+          <li><a href="#programas"><span lang="es">Programas</span><span lang="en">Programs</span></a></li>
+          <li><a href="#impacto"><span lang="es">Impacto</span><span lang="en">Impact</span></a></li>
+          <li><a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang-btn" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="#ayudar">
+          <span lang="es">Cómo ayudar</span><span lang="en">How to help</span>
+        </a>
+      </div>
+
+      <button type="button" class="hamburger" id="hamburger" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+        <span lang="es" class="menu-label">Abrir menú</span><span lang="en" class="menu-label">Open menu</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <p class="hero-chip">
+            <svg viewBox="0 0 24 24" fill="#820333" aria-hidden="true"><path d="M12 2l2.6 6.5L21 9.3l-4.9 4.3 1.5 6.7L12 16.8 6.4 20.3l1.5-6.7L3 9.3l6.4-.8z"/></svg>
+            <span lang="es">Colectivo comunitario · General Escobedo, N.L.</span>
+            <span lang="en">Community collective · General Escobedo, N.L.</span>
+          </p>
+          <h1 id="hero-title">
+            <span lang="es">Sembramos <em>comunidad</em> y raíces para las familias de Escobedo</span>
+            <span lang="en">We plant <em>community</em> and roots for families in Escobedo</span>
+          </h1>
+          <p class="lead">
+            <span lang="es">Somos Colectivo RAMI: un grupo de mujeres que se acompaña entre sí y, junto con Raíces RAMI, lleva clases de sábado, talleres y apoyo a las niñas, niños y familias de la comunidad.</span>
+            <span lang="en">We are Colectivo RAMI: a group of women who support one another, and together with Raíces RAMI, bring Saturday classes, workshops, and support to the community's children and families.</span>
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#ayudar"><span lang="es">Quiero ayudar</span><span lang="en">I want to help</span></a>
+            <a class="btn btn-ghost" href="#programas"><span lang="es">Conoce nuestros programas</span><span lang="en">See our programs</span></a>
+          </div>
+        </div>
+
+        <!-- Decorative scene: a small tree over rolling hills -->
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 520 460">
+            <circle cx="400" cy="90" r="34" fill="#820333"/>
+            <circle cx="366" cy="108" r="24" fill="#D9A441"/>
+            <circle cx="434" cy="108" r="24" fill="#7C8F6E"/>
+            <circle cx="400" cy="54" r="20" fill="#E3AFC0"/>
+            <g stroke="#D9A441" stroke-width="4" stroke-linecap="round">
+              <line x1="400" y1="12" x2="400" y2="24"/>
+              <line x1="454" y1="34" x2="446" y2="42"/>
+              <line x1="346" y1="34" x2="354" y2="42"/>
+            </g>
+            <path d="M-20 400 Q120 300 260 370 T540 360 V470 H-20 Z" fill="#E3AFC0" opacity=".5"/>
+            <path d="M-20 430 Q160 340 320 410 T540 400 V470 H-20 Z" fill="#820333" opacity=".9"/>
+            <path d="M-20 462 Q200 400 540 452 V470 H-20 Z" fill="#2E112D"/>
+            <circle cx="118" cy="120" r="7" fill="#D9A441"/>
+            <circle cx="70"  cy="210" r="5" fill="#E3AFC0"/>
+            <circle cx="180" cy="60"  r="4" fill="#820333"/>
+            <path d="M300 180 c0-10 14-10 14 0 c0-10 14-10 14 0 c0 9-14 16-14 16 s-14-7-14-16z" fill="#820333" opacity=".7"/>
+            <path d="M430 250 c0-8 11-8 11 0 c0-8 11-8 11 0 c0 7-11 13-11 13 s-11-6-11-13z" fill="#7C8F6E" opacity=".6"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values ribbon (decorative) -->
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon-track">
+        <span lang="es">Comunidad</span><span lang="es">Raíces</span><span lang="es">Cariño</span><span lang="es">Constancia</span>
+        <span lang="en">Community</span><span lang="en">Roots</span><span lang="en">Care</span><span lang="en">Consistency</span>
+        <span lang="es">Comunidad</span><span lang="es">Raíces</span><span lang="es">Cariño</span><span lang="es">Constancia</span>
+        <span lang="en">Community</span><span lang="en">Roots</span><span lang="en">Care</span><span lang="en">Consistency</span>
+      </div>
+    </div>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="nosotros" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker"><span lang="es">Quiénes somos</span><span lang="en">Who we are</span></p>
+          <h2 id="about-title">
+            <span lang="es">De un mismo tronco, dos raíces</span>
+            <span lang="en">From one trunk, two roots</span>
+          </h2>
+          <p class="lead">
+            <span lang="es">Colectivo RAMI nació entre vecinas de General Escobedo, Nuevo León, después de pintar juntas la casa de una familia de la colonia. De ahí siguieron las clases, las despensas y los sábados de Raíces RAMI con las niñas y los niños.</span>
+            <span lang="en">Colectivo RAMI was born among neighbors in General Escobedo, Nuevo León, after painting a family's home together in the colonia. From there came the classes, the pantry support, and Raíces RAMI's Saturdays with the children.</span>
+          </p>
+        </div>
+
+        <p class="lead reveal" style="max-width: 46em; margin-bottom: 14px;">
+          <span lang="es">Hoy somos un grupo de 38 mujeres coordinado por Elena Balderas, y una comunidad de niñas y niños que cada sábado aprende, juega y crece con Raíces RAMI. Escuchamos primero, acompañamos siempre y construimos juntas cada solución.</span>
+          <span lang="en">Today we are a group of 38 women coordinated by Elena Balderas, and a community of children who learn, play, and grow every Saturday with Raíces RAMI. We listen first, we show up always, and we build every solution together.</span>
+        </p>
+
+        <div class="values-grid" style="margin-top: 48px;">
+          <div class="value-card reveal">
+            <h3><span lang="es">Cariño</span><span lang="en">Care</span></h3>
+            <p><span lang="es">Trato cercano, sin juicios y con la puerta siempre abierta.</span><span lang="en">Close, judgment-free support, door always open.</span></p>
+          </div>
+          <div class="value-card reveal">
+            <h3><span lang="es">Comunidad</span><span lang="en">Community</span></h3>
+            <p><span lang="es">Nadie cuida sola: tejemos redes entre vecinas y vecinos.</span><span lang="en">No one cares alone: we weave networks among neighbors.</span></p>
+          </div>
+          <div class="value-card reveal">
+            <h3><span lang="es">Raíces</span><span lang="en">Roots</span></h3>
+            <p><span lang="es">Cuidamos la identidad y el arraigo de cada niña y niño.</span><span lang="en">We nurture the identity and sense of belonging of every child.</span></p>
+          </div>
+          <div class="value-card reveal">
+            <h3><span lang="es">Dignidad</span><span lang="en">Dignity</span></h3>
+            <p><span lang="es">Recibir una mano nunca debería costar el orgullo.</span><span lang="en">Receiving a hand should never cost you your pride.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROGRAMS ================= -->
+    <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 30 C240 48 480 6 720 18 C960 30 1200 48 1440 26 L1440 48 L0 48 Z" fill="#2E112D"/>
+    </svg>
+    <section id="programas" class="programs" aria-labelledby="programs-title" style="padding-top: 30px;">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker"><span lang="es">Nuestros programas</span><span lang="en">Our programs</span></p>
+          <h2 id="programs-title">
+            <span lang="es">Dos programas, un mismo compromiso</span>
+            <span lang="en">Two programs, one shared commitment</span>
+          </h2>
+          <p class="lead">
+            <span lang="es">Colectivo RAMI sostiene a las mujeres de la comunidad; Raíces RAMI siembra en las niñas y los niños. Uno no existe sin el otro.</span>
+            <span lang="en">Colectivo RAMI supports the women of the community; Raíces RAMI plants seeds in the children. One doesn't exist without the other.</span>
+          </p>
+        </div>
+
+        <div class="programs-grid">
+          <article class="program-card reveal">
+            <div class="program-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3.5 20c.6-3.4 2.5-5 4.5-5s3.9 1.6 4.5 5"/><path d="M13.5 20c.4-2.4 1.7-3.8 3.5-3.8 1.4 0 2.7 1 3.4 3.1"/></svg>
+            </div>
+            <h3>Colectivo RAMI</h3>
+            <p>
+              <span lang="es">Un grupo de 38 mujeres coordinado por Elena Balderas que se acompaña, aprende y celebra junta.</span>
+              <span lang="en">A group of 38 women coordinated by Elena Balderas who support, learn, and celebrate together.</span>
+            </p>
+            <ul class="program-list">
+              <li><span lang="es">Clases de velas, emprendimiento y finanzas</span><span lang="en">Candle-making, entrepreneurship, and finance classes</span></li>
+              <li><span lang="es">Eventos: posadas, día de las madres y fiestas patrias</span><span lang="en">Events: posadas, Mother's Day, and Independence celebrations</span></li>
+              <li><span lang="es">Apoyo con despensas, abanicos y ropa</span><span lang="en">Support with pantry boxes, fans, and clothing</span></li>
+              <li><span lang="es">Convivencia: loterías y cumpleaños</span><span lang="en">Get-togethers: lotería games and birthdays</span></li>
+            </ul>
+          </article>
+
+          <article class="program-card reveal">
+            <div class="program-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 21V9a6 6 0 0 1 12 0v12"/><path d="M6 13h12"/><path d="M9 9h6v4H9z"/></svg>
+            </div>
+            <h3>Raíces RAMI</h3>
+            <p>
+              <span lang="es">Clases de sábado para niñas y niños de la comunidad, con un nuevo ciclo cada año.</span>
+              <span lang="en">Saturday classes for the community's children, with a new cycle every year.</span>
+            </p>
+            <ul class="program-list">
+              <li><span lang="es">Ciclo 2026: clases de 3 a 5 pm, a partir del 21 de febrero</span><span lang="en">2026 cycle: classes 3–5 pm, starting February 21</span></li>
+              <li><span lang="es">Inscripciones únicamente el 7 de febrero en casa de Elena Balderas</span><span lang="en">Enrollment only on February 7, at Elena Balderas's home</span></li>
+              <li><span lang="es">Sin inscripciones fuera de esa fecha, sin excepción</span><span lang="en">No enrollment outside that date, no exceptions</span></li>
+              <li><span lang="es">Actividades lúdicas, arte y manualidades cada sábado</span><span lang="en">Games, art, and crafts every Saturday</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NECESIDADES ================= -->
+    <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 30 C240 48 480 6 720 18 C960 30 1200 48 1440 26 L1440 48 L0 48 Z" fill="#F3E2D8"/>
+    </svg>
+    <section id="necesidades" class="necesidades" aria-labelledby="necesidades-title" style="padding-top: 30px;">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker"><span lang="es">Lo que vemos cada semana</span><span lang="en">What we see every week</span></p>
+          <h2 id="necesidades-title"><span lang="es">Las necesidades que nos mueven</span><span lang="en">The needs that move us</span></h2>
+          <p class="lead">
+            <span lang="es">Esto es lo que la comunidad nos ha pedido directamente, y también la guía de cómo puedes ayudar.</span>
+            <span lang="en">This is what the community has asked us for directly — and it's also the guide for how you can help.</span>
+          </p>
+        </div>
+
+        <div class="necesidades-grid">
+          <div class="necesidad-card reveal">
+            <div class="necesidad-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9C1 8.5 3 5 6.5 5c2 0 3.6 1.2 5.5 3 1.9-1.8 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg></div>
+            <h3><span lang="es">Voluntariado</span><span lang="en">Volunteers</span></h3>
+            <p><span lang="es">Manos para las clases, los eventos y el mantenimiento del espacio.</span><span lang="en">Hands for classes, events, and upkeep of the space.</span></p>
+          </div>
+          <div class="necesidad-card reveal">
+            <div class="necesidad-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 21V9a6 6 0 0 1 12 0v12"/><path d="M6 13h12"/><path d="M9 9h6v4H9z"/></svg></div>
+            <h3><span lang="es">Capacitación</span><span lang="en">Training</span></h3>
+            <p><span lang="es">Clases de matemáticas, escritura y herramientas para el día a día.</span><span lang="en">Math, writing, and practical everyday-skills classes.</span></p>
+          </div>
+          <div class="necesidad-card reveal">
+            <div class="necesidad-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 6l2-3 3 3"/><path d="M12 6l2-3 3 3"/><path d="M10.5 13.5l4 2.2-4 2.2z"/></svg></div>
+            <h3><span lang="es">Actividades lúdicas</span><span lang="en">Play &amp; recreation</span></h3>
+            <p><span lang="es">Juegos y dinámicas que ayuden a aprender y socializar.</span><span lang="en">Games and activities that help kids learn and socialize.</span></p>
+          </div>
+          <div class="necesidad-card reveal">
+            <div class="necesidad-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7" fill="none"/><circle cx="12" cy="12" r="10.5" fill="none"/></svg></div>
+            <h3><span lang="es">Bienestar</span><span lang="en">Wellbeing</span></h3>
+            <p><span lang="es">Relajación, meditación y ejercicios de concentración.</span><span lang="en">Relaxation, meditation, and focus exercises.</span></p>
+          </div>
+          <div class="necesidad-card reveal">
+            <div class="necesidad-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
+            <h3><span lang="es">Servicios básicos</span><span lang="en">Basic services</span></h3>
+            <p><span lang="es">Cortes de cabello, revisiones de salud y cuidado personal.</span><span lang="en">Haircuts, health check-ups, and personal-care support.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= IMPACT (KPI row) ================= -->
+    <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 30 C240 48 480 6 720 18 C960 30 1200 48 1440 26 L1440 48 L0 48 Z" fill="#2E112D"/>
+    </svg>
+    <section id="impacto" class="impact" aria-labelledby="impact-title" style="padding-top: 30px;">
+      <div class="container">
+        <div class="section-head center">
+          <p class="kicker"><span lang="es">Nuestro impacto</span><span lang="en">Our impact</span></p>
+          <h2 id="impact-title"><span lang="es">Lo que sostenemos juntas</span><span lang="en">What we hold up together</span></h2>
+          <p class="lead"><span lang="es">Estas son las cifras que ya podemos contar — y seguimos sumando.</span><span lang="en">These are the numbers we can already count — and we keep adding to them.</span></p>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi">
+            <span class="kpi-value" data-count="38">0</span>
+            <span class="kpi-label"><span lang="es">Mujeres en Colectivo RAMI</span><span lang="en">Women in Colectivo RAMI</span></span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-value" data-count="2">0</span>
+            <span class="kpi-label"><span lang="es">Programas activos</span><span lang="en">Active programs</span></span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-value" data-count="5">0</span>
+            <span class="kpi-label"><span lang="es">Necesidades que atendemos</span><span lang="en">Needs we're addressing</span></span>
+          </div>
+        </div>
+
+        <p class="impact-note">
+          <span lang="es">Cifras basadas en la información compartida por el colectivo — se irán actualizando.</span>
+          <span lang="en">Figures based on information shared by the collective — we'll keep them updated.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= QUOTE ================= -->
+    <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 30 C240 48 480 6 720 18 C960 30 1200 48 1440 26 L1440 48 L0 48 Z" fill="#FAF2D7"/>
+    </svg>
+    <section class="quote" aria-label="Testimonio" style="padding-top: 30px;">
+      <div class="container">
+        <!-- ✏️ EDITAR: reemplazar por un testimonio real y con consentimiento -->
+        <blockquote class="reveal">
+          <span lang="es">Empezamos pintando una casa entre vecinas. Hoy tenemos una red que no suelta a nadie.</span>
+          <span lang="en">We started by painting a house together as neighbors. Today we have a network that doesn't let anyone go.</span>
+        </blockquote>
+        <cite class="reveal">
+          <span lang="es">Integrante de Colectivo RAMI</span>
+          <span lang="en">Member of Colectivo RAMI</span>
+        </cite>
+      </div>
+    </section>
+
+    <!-- ================= CÓMO AYUDAR ================= -->
+    <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 30 C240 48 480 6 720 18 C960 30 1200 48 1440 26 L1440 48 L0 48 Z" fill="#F3E2D8"/>
+    </svg>
+    <section id="ayudar" class="ayudar" aria-labelledby="ayudar-title" style="padding-top: 30px;">
+      <div class="container">
+        <div class="section-head center">
+          <p class="kicker"><span lang="es">Cómo ayudar</span><span lang="en">How to help</span></p>
+          <h2 id="ayudar-title"><span lang="es">Elige cómo quieres sumar</span><span lang="en">Choose how you'd like to help</span></h2>
+          <p class="lead">
+            <span lang="es">Cada apoyo llega directo a las 38 mujeres de Colectivo RAMI y a las niñas y niños de Raíces RAMI.</span>
+            <span lang="en">Every bit of support goes straight to the 38 women of Colectivo RAMI and the children of Raíces RAMI.</span>
+          </p>
+        </div>
+
+        <div class="help-tabs" role="tablist" aria-label="Formas de ayudar">
+          <button type="button" class="help-tab" role="tab" id="tab-dinero" aria-controls="panel-dinero" aria-selected="true">
+            <span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12.5" rx="2.5"/><circle cx="12" cy="12.2" r="3.2"/><path d="M5.8 9.4h.01M18.2 15h.01"/></svg></span>
+            <span class="tab-title"><span lang="es">Dinero</span><span lang="en">Money</span></span>
+            <span class="tab-sub"><span lang="es">Aporta un donativo</span><span lang="en">Make a donation</span></span>
+          </button>
+          <button type="button" class="help-tab" role="tab" id="tab-voluntariado" aria-controls="panel-voluntariado" aria-selected="false">
+            <span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9C1 8.5 3 5 6.5 5c2 0 3.6 1.2 5.5 3 1.9-1.8 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg></span>
+            <span class="tab-title"><span lang="es">Voluntariado</span><span lang="en">Volunteer</span></span>
+            <span class="tab-sub"><span lang="es">Dona tu tiempo</span><span lang="en">Give your time</span></span>
+          </button>
+          <button type="button" class="help-tab" role="tab" id="tab-especie" aria-controls="panel-especie" aria-selected="false">
+            <span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.6 10a2 2 0 0 1-2 1.7H7.6a2 2 0 0 1-2-1.7z"/><path d="M8 9c0-5 8-5 8 0"/></svg></span>
+            <span class="tab-title"><span lang="es">Elementos físicos</span><span lang="en">Physical items</span></span>
+            <span class="tab-sub"><span lang="es">Ropa, comida y más</span><span lang="en">Clothes, food &amp; more</span></span>
+          </button>
+        </div>
+
+        <div class="help-panels">
+          <!-- Panel: Dinero -->
+          <div class="help-panel" id="panel-dinero" role="tabpanel" aria-labelledby="tab-dinero">
+            <p class="panel-lead">
+              <span lang="es">Tu aportación se convierte en materiales para las clases de Raíces RAMI, despensas y apoyo directo para las familias de Colectivo RAMI.</span>
+              <span lang="en">Your contribution becomes materials for Raíces RAMI's classes, pantry support, and direct help for Colectivo RAMI families.</span>
+            </p>
+            <!-- ✏️ EDITAR: datos bancarios reales -->
+            <div class="bank-block">
+              <div class="bank-row"><span class="lbl2"><span lang="es">Banco</span><span lang="en">Bank</span></span><span class="val2">BBVA México</span></div>
+              <div class="bank-row"><span class="lbl2"><span lang="es">Titular</span><span lang="en">Account holder</span></span><span class="val2">Colectivo RAMI</span></div>
+              <div class="clabe">
+                <span>CLABE 0000 0000 0000 0000 00</span>
+                <button type="button" class="copy-btn" data-copy="000000000000000000">
+                  <span lang="es">Copiar</span><span lang="en">Copy</span>
+                </button>
+              </div>
+            </div>
+            <p class="panel-lead">
+              <span lang="es">¿Prefieres entregar tu donativo en efectivo? Puedes hacerlo directamente con Elena Balderas, coordinadora del colectivo.</span>
+              <span lang="en">Prefer to give cash? You can hand it directly to Elena Balderas, the collective's coordinator.</span>
+            </p>
+            <p class="example-badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20l7-11H5l7 11z"/><path d="M12 4v3"/></svg>
+              <span lang="es">Datos de ejemplo — actualízalos con la información real del colectivo.</span>
+              <span lang="en">Example data — update it with the collective's real information.</span>
+            </p>
+          </div>
+
+          <!-- Panel: Voluntariado -->
+          <div class="help-panel" id="panel-voluntariado" role="tabpanel" aria-labelledby="tab-voluntariado" hidden>
+            <p class="panel-lead">
+              <span lang="es">Hay una tarea para cada tipo de ayuda: desde apoyar una clase de sábado hasta la logística de un evento. Cuéntanos un poco de ti y te contactamos.</span>
+              <span lang="en">There's a task for every kind of help: from supporting a Saturday class to event logistics. Tell us a bit about yourself and we'll reach out.</span>
+            </p>
+
+            <form id="volunteer-form" novalidate>
+              <div class="field">
+                <label for="v-nombre"><span lang="es">Tu nombre</span><span lang="en">Your name</span></label>
+                <input id="v-nombre" name="nombre" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="v-correo"><span lang="es">Tu correo</span><span lang="en">Your email</span></label>
+                <input id="v-correo" name="correo" type="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="v-telefono"><span lang="es">Teléfono (opcional)</span><span lang="en">Phone (optional)</span></label>
+                <input id="v-telefono" name="telefono" type="tel" autocomplete="tel" />
+              </div>
+
+              <fieldset class="field field-checks">
+                <legend><span lang="es">¿En qué te gustaría ayudar?</span><span lang="en">What would you like to help with?</span></legend>
+                <label class="check-row"><input type="checkbox" name="area" value="Clases de Raíces RAMI (sábados) / Raíces RAMI classes (Saturdays)" /><span><span lang="es">Clases de Raíces RAMI (sábados)</span><span lang="en">Raíces RAMI classes (Saturdays)</span></span></label>
+                <label class="check-row"><input type="checkbox" name="area" value="Talleres de Colectivo RAMI / Colectivo RAMI workshops" /><span><span lang="es">Talleres de Colectivo RAMI</span><span lang="en">Colectivo RAMI workshops</span></span></label>
+                <label class="check-row"><input type="checkbox" name="area" value="Eventos y logística / Events and logistics" /><span><span lang="es">Eventos y logística</span><span lang="en">Events and logistics</span></span></label>
+                <label class="check-row"><input type="checkbox" name="area" value="Mantenimiento del espacio / Space upkeep" /><span><span lang="es">Mantenimiento del espacio</span><span lang="en">Space upkeep</span></span></label>
+                <label class="check-row"><input type="checkbox" name="area" value="Servicios de bienestar (salud, cortes de cabello, etc.) / Wellbeing services (health, haircuts, etc.)" /><span><span lang="es">Servicios de bienestar (salud, cortes de cabello, etc.)</span><span lang="en">Wellbeing services (health, haircuts, etc.)</span></span></label>
+              </fieldset>
+
+              <div class="field">
+                <label for="v-disponibilidad"><span lang="es">Disponibilidad</span><span lang="en">Availability</span></label>
+                <input id="v-disponibilidad" name="disponibilidad" type="text" placeholder="Ej. sábados por la tarde" />
+              </div>
+              <div class="field">
+                <label for="v-mensaje"><span lang="es">Mensaje (opcional)</span><span lang="en">Message (optional)</span></label>
+                <textarea id="v-mensaje" name="mensaje"></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="submit" style="justify-self: start;">
+                <span lang="es">Enviar solicitud</span><span lang="en">Send application</span>
+              </button>
+              <p class="form-hint">
+                <span lang="es">Al enviar se abrirá tu aplicación de correo con tu solicitud lista.</span>
+                <span lang="en">Submitting opens your email app with your application ready to send.</span>
+              </p>
+            </form>
+          </div>
+
+          <!-- Panel: Elementos físicos -->
+          <div class="help-panel" id="panel-especie" role="tabpanel" aria-labelledby="tab-especie" hidden>
+            <p class="panel-lead">
+              <span lang="es">Cuéntanos qué quieres donar y te decimos cómo hacerlo llegar.</span>
+              <span lang="en">Tell us what you'd like to donate and we'll tell you how to get it to us.</span>
+            </p>
+
+            <div class="item-tabs" role="tablist" aria-label="Tipo de donativo en especie">
+              <button type="button" class="item-tab" role="tab" id="tab-ropa" aria-controls="item-ropa" aria-selected="true">
+                <span lang="es">Ropa</span><span lang="en">Clothing</span>
+              </button>
+              <button type="button" class="item-tab" role="tab" id="tab-comida" aria-controls="item-comida" aria-selected="false">
+                <span lang="es">Comida</span><span lang="en">Food</span>
+              </button>
+              <button type="button" class="item-tab" role="tab" id="tab-otro" aria-controls="item-otro" aria-selected="false">
+                <span lang="es">Otro</span><span lang="en">Other</span>
+              </button>
+            </div>
+
+            <div class="item-panel" id="item-ropa" role="tabpanel" aria-labelledby="tab-ropa">
+              <p>
+                <span lang="es">Recibimos ropa en buen estado para niñas, niños y adultos. Entrégala los sábados de 3 a 5 pm, cuando tenemos clases de Raíces RAMI, o escríbenos para coordinar otro horario.</span>
+                <span lang="en">We accept clothing in good condition for children and adults. Drop it off Saturdays from 3 to 5 pm, during Raíces RAMI classes, or message us to arrange another time.</span>
+              </p>
+            </div>
+            <div class="item-panel" id="item-comida" role="tabpanel" aria-labelledby="tab-comida" hidden>
+              <p>
+                <span lang="es">Aceptamos despensa no perecedera: arroz, frijol, aceite, atún y otros enlatados. Escríbenos por WhatsApp y coordinamos el punto de entrega más cercano a ti.</span>
+                <span lang="en">We accept non-perishable food: rice, beans, oil, canned tuna, and other canned goods. Message us on WhatsApp and we'll arrange the nearest drop-off point.</span>
+              </p>
+            </div>
+            <div class="item-panel" id="item-otro" role="tabpanel" aria-labelledby="tab-otro" hidden>
+              <p>
+                <span lang="es">¿Juguetes, útiles escolares o cobijas? Cuéntanos qué tienes y te decimos si lo necesitamos y cómo recibirlo.</span>
+                <span lang="en">Toys, school supplies, or blankets? Tell us what you have and we'll let you know if we need it and how to get it to us.</span>
+              </p>
+            </div>
+
+            <p class="example-badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20l7-11H5l7 11z"/><path d="M12 4v3"/></svg>
+              <span lang="es">Puntos y horarios de ejemplo — confírmalos antes de publicar.</span>
+              <span lang="en">Example drop-off points and times — confirm them before publishing.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="donate-ctas">
+          <!-- ✏️ EDITAR: número de WhatsApp real (código de país + número, solo dígitos) -->
+          <a class="btn btn-primary" href="https://wa.me/5210000000000" target="_blank" rel="noopener">
+            <span lang="es">Hablar por WhatsApp</span><span lang="en">Chat on WhatsApp</span>
+          </a>
+          <a class="btn btn-ghost" href="mailto:hola@colectivorami.org">
+            <span lang="es">Escribir un correo</span><span lang="en">Send an email</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contacto" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div>
+          <p class="kicker"><span lang="es">Contacto</span><span lang="en">Get in touch</span></p>
+          <h2 id="contact-title"><span lang="es">Hablemos</span><span lang="en">Let's talk</span></h2>
+
+          <ul class="contact-list">
+            <!-- ✏️ EDITAR: correo / dirección / redes reales -->
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
+              <div>
+                <span class="lbl"><span lang="es">Correo</span><span lang="en">Email</span></span>
+                <a href="mailto:hola@colectivorami.org">hola@colectivorami.org</a>
+              </div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+              <div>
+                <span class="lbl"><span lang="es">Dónde estamos</span><span lang="en">Where we are</span></span>
+                <span lang="es">General Escobedo, Nuevo León, México</span><span lang="en">General Escobedo, Nuevo León, México</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+              <div>
+                <span class="lbl"><span lang="es">Clases de Raíces RAMI</span><span lang="en">Raíces RAMI classes</span></span>
+                <span lang="es">Sábados de 3 a 5 pm</span><span lang="en">Saturdays, 3–5 pm</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></span>
+              <div>
+                <span class="lbl"><span lang="es">WhatsApp</span><span lang="en">WhatsApp</span></span>
+                <a href="https://wa.me/5210000000000" target="_blank" rel="noopener">+52 1 000 000 0000</a>
+              </div>
+            </li>
+          </ul>
+
+          <div class="socials">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7h2.6l.4-3h-3V9.1c0-.9.3-1.5 1.6-1.5h1.5V4.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9V11H8v3h2.5v7z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 4.3c2.5 0 2.8 0 3.8.1 2.4.1 3.7 1.3 3.8 3.8 0 1 .1 1.3.1 3.8s0 2.8-.1 3.8c-.1 2.4-1.3 3.7-3.8 3.8-1 0-1.3.1-3.8.1s-2.8 0-3.8-.1c-2.4-.1-3.7-1.3-3.8-3.8 0-1-.1-1.3-.1-3.8s0-2.8.1-3.8C4.5 5.8 5.7 4.5 8.2 4.4c1-.1 1.3-.1 3.8-.1zM12 2.5c-2.6 0-2.9 0-3.9.1-3.3.2-5.2 2-5.4 5.4-.1 1-.1 1.4-.1 4s0 2.9.1 3.9c.2 3.3 2 5.2 5.4 5.4 1 .1 1.3.1 3.9.1s2.9 0 3.9-.1c3.3-.2 5.2-2 5.4-5.4.1-1 .1-1.4.1-3.9s0-2.9-.1-3.9c-.2-3.3-2-5.2-5.4-5.4-1-.1-1.3-.1-3.9-.1zm0 4.6a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.1-9.4a1.1 1.1 0 1 0 0 2.3 1.1 1.1 0 0 0 0-2.3z"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.4 2.2 1.8 3.6 4 3.8v2.9c-1.5 0-2.9-.5-4-1.3v6.3c0 4-2.9 6.3-6.1 6.3-3 0-5.5-2.3-5.5-5.4 0-3.4 3-5.7 6.3-5.3v3c-1.6-.3-3.3.6-3.3 2.3 0 1.4 1.1 2.4 2.5 2.4 1.6 0 2.9-1.2 2.9-3.2V3h3.2z"/></svg></a>
+          </div>
+        </div>
+
+        <form id="contact-form" novalidate>
+          <div class="field">
+            <label for="f-nombre"><span lang="es">Tu nombre</span><span lang="en">Your name</span></label>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="f-correo"><span lang="es">Tu correo</span><span lang="en">Your email</span></label>
+            <input id="f-correo" name="correo" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="f-mensaje"><span lang="es">Mensaje</span><span lang="en">Message</span></label>
+            <textarea id="f-mensaje" name="mensaje" required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" style="justify-self: start;">
+            <span lang="es">Enviar mensaje</span><span lang="en">Send message</span>
+          </button>
+          <p class="form-hint">
+            <span lang="es">Al enviar se abrirá tu aplicación de correo con el mensaje listo.</span>
+            <span lang="en">Submitting opens your email app with the message ready to send.</span>
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-brand">
+          <svg viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="15" r="9" fill="#D9A441"/>
+            <path d="M2 33 Q20 20 38 33 Z" fill="#E3AFC0"/>
+          </svg>
+          Colectivo RAMI
+        </p>
+        <ul class="footer-links">
+          <li><a href="#nosotros"><span lang="es">Nosotros</span><span lang="en">About</span></a></li>
+          <li><a href="#programas"><span lang="es">Programas</span><span lang="en">Programs</span></a></li>
+          <li><a href="#ayudar"><span lang="es">Cómo ayudar</span><span lang="en">How to help</span></a></li>
+          <li><a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a></li>
+        </ul>
+      </div>
+      <p class="footer-fine">
+        <span lang="es">© <span id="year">2026</span> Colectivo RAMI · Hecho con cariño en General Escobedo, Nuevo León.</span>
+        <span lang="en">© <span id="year-en">2026</span> Colectivo RAMI · Made with love in General Escobedo, Nuevo León.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+      var root = document.documentElement;
+
+      /* ---------- Language switch ---------- */
+      var buttons = document.querySelectorAll(".lang-btn");
+      function setLang(lang, persist) {
+        root.setAttribute("lang", lang);
+        buttons.forEach(function (b) {
+          var active = b.dataset.lang === lang;
+          b.classList.toggle("active", active);
+          b.setAttribute("aria-pressed", String(active));
+        });
+        if (persist) { try { localStorage.setItem("rami-lang", lang); } catch (e) {} }
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener("click", function () { setLang(b.dataset.lang, true); });
+      });
+      var saved = null;
+      try { saved = localStorage.getItem("rami-lang"); } catch (e) {}
+      if (saved === "en" || saved === "es") { setLang(saved, false); }
+      else if ((navigator.language || "").indexOf("en") === 0) { setLang("en", false); }
+
+      /* ---------- Mobile menu ---------- */
+      var burger = document.getElementById("hamburger");
+      var links = document.getElementById("nav-links");
+      burger.addEventListener("click", function () {
+        var open = links.classList.toggle("open");
+        burger.setAttribute("aria-expanded", String(open));
+      });
+      links.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") {
+          links.classList.remove("open");
+          burger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      /* ---------- Reveal on scroll ---------- */
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var revealEls = document.querySelectorAll(".reveal");
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealEls.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var revealObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add("in"); revealObs.unobserve(en.target); }
+          });
+        }, { threshold: 0.15 });
+        revealEls.forEach(function (el) { revealObs.observe(el); });
+      }
+
+      /* ---------- Impact counters (KPI row) ---------- */
+      var counters = document.querySelectorAll(".kpi-value");
+      function render(el, value) {
+        var prefix = el.dataset.prefix || "";
+        el.textContent = prefix + value.toLocaleString("es-MX");
+      }
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        counters.forEach(function (el) { render(el, Number(el.dataset.count)); });
+      } else {
+        var countObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            countObs.unobserve(en.target);
+            var el = en.target, target = Number(el.dataset.count), t0 = null, DUR = 1400;
+            function tick(ts) {
+              if (t0 === null) t0 = ts;
+              var p = Math.min((ts - t0) / DUR, 1);
+              var eased = 1 - Math.pow(1 - p, 3);
+              render(el, Math.round(target * eased));
+              if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          });
+        }, { threshold: 0.5 });
+        counters.forEach(function (el) { countObs.observe(el); });
+      }
+
+      /* ---------- Copy CLABE ---------- */
+      var copyBtn = document.querySelector(".copy-btn");
+      copyBtn.addEventListener("click", function () {
+        var text = copyBtn.dataset.copy;
+        function done() {
+          var lang = root.getAttribute("lang");
+          var old = copyBtn.querySelector(lang === "en" ? '[lang="en"]' : '[lang="es"]');
+          var prev = old.textContent;
+          old.textContent = lang === "en" ? "Copied!" : "¡Copiado!";
+          setTimeout(function () { old.textContent = prev; }, 1800);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, done);
+        } else { done(); }
+      });
+
+      /* ---------- Generic tabs: help-tabs & item-tabs ---------- */
+      function wireTabs(tablist) {
+        var tabs = tablist.querySelectorAll('[role="tab"]');
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            tabs.forEach(function (t) {
+              var active = t === tab;
+              t.setAttribute("aria-selected", String(active));
+              var p = document.getElementById(t.getAttribute("aria-controls"));
+              if (p) p.hidden = !active;
+            });
+          });
+        });
+      }
+      document.querySelectorAll('[role="tablist"]').forEach(function (tl) { wireTabs(tl); });
+
+      /* ---------- Volunteer form -> mailto ---------- */
+      document.getElementById("volunteer-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var en = root.getAttribute("lang") === "en";
+        var f = this;
+        var areas = Array.prototype.slice.call(f.querySelectorAll('input[name="area"]:checked')).map(function (c) { return c.value; });
+        var subject = en ? "I want to volunteer" : "Quiero ser voluntario/a";
+        var name = f.nombre.value.trim(), mail = f.correo.value.trim();
+        if (!name || !mail) { return; }
+        var lines = [
+          name + " <" + mail + ">",
+          f.telefono.value.trim() ? (en ? "Phone: " : "Teléfono: ") + f.telefono.value.trim() : "",
+          areas.length ? (en ? "Interested in: " : "Interesado/a en: ") + areas.join(", ") : "",
+          f.disponibilidad.value.trim() ? (en ? "Availability: " : "Disponibilidad: ") + f.disponibilidad.value.trim() : "",
+          "",
+          f.mensaje.value.trim()
+        ].filter(function (l) { return l !== ""; }).join("\n");
+        window.location.href = "mailto:hola@colectivorami.org?subject=" +
+          encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines);
+      });
+
+      /* ---------- Contact form -> mailto ---------- */
+      document.getElementById("contact-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var en = root.getAttribute("lang") === "en";
+        var name = this.nombre.value.trim(), mail = this.correo.value.trim(), msg = this.mensaje.value.trim();
+        if (!name || !mail || !msg) { return; }
+        var subject = en ? "Hello Colectivo RAMI" : "Hola Colectivo RAMI";
+        var body = name + " <" + mail + ">\n\n" + msg;
+        window.location.href = "mailto:hola@colectivorami.org?subject=" +
+          encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      });
+
+      /* ---------- Footer year ---------- */
+      var y = String(new Date().getFullYear());
+      document.getElementById("year").textContent = y;
+      document.getElementById("year-en").textContent = y;
+    })();
+  </script>
+</body>
+</html>
